@@ -1,0 +1,59 @@
+﻿<?xml version="1.0"?>
+<Parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Parameter>
+    <Id>BillingCode</Id>
+    <Name>Billing Code</Name>
+    <Description>This is blah-blah-blah</Description>
+    <Type>System.String</Type>
+    <Value>31fg1е53еb</Value>
+  </Parameter>
+  <Parameter>
+    <Id>BillingCode</Id>
+    <Name>Billing Code</Name>
+    <Description>This is blah-blah-blah</Description>
+    <Type>System.String</Type>
+    <Value>31fg1е53еb</Value>
+  </Parameter>
+  <Parameter>
+    <Id>BillingCode</Id>
+    <Name>Billing Code</Name>
+    <Description>This is blah-blah-blah</Description>
+    <Type>System.String</Type>
+    <Value>31fg1е53еb</Value>
+  </Parameter>
+  <Parameter>
+    <Id>AbandonmentRate</Id>
+    <Name>Nuisance call abandonment rate</Name>
+    <Description>This is blah-blah-blah </Description>
+    <Type>System.Int32</Type>
+    <Value>44444</Value>
+  </Parameter>
+  <Parameter>
+    <Id>AbandonmentRate</Id>
+    <Name>Nuisance call abandonment rate</Name>
+    <Description>This is blah-blah-blah </Description>
+    <Type>System.Int32</Type>
+    <Value>1</Value>
+  </Parameter>
+  <Parameter>
+    <Id>AbandonmentRate</Id>
+    <Name>Nuisance call abandonment rate</Name>
+    <Description>This is blah-blah-blah </Description>
+    <Type>System.Int32</Type>
+    <Value>-11</Value>
+  </Parameter>
+  <Parameter>
+    <Id>AbandonmentRate</Id>
+    <Name>Nuisance call abandonment rate</Name>
+    <Description>This is blah-blah-blah </Description>
+    <Type>System.Boolean</Type>
+    <Value>True</Value>
+  </Parameter>
+  <Parameter>
+    <Id>AbandonmentRate</Id>
+    <Name>Nuisance call abandonment rate</Name>
+    <Description>This is blah-blah-blah </Description>
+    <Type>System.Boolean</Type>
+    <Value>False</Value>
+  </Parameter>
+</Parameters>
