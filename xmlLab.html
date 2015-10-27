@@ -4,14 +4,16 @@
 <head>
     <meta charset="utf-8" />
     <script type="text/javascript" src="xmlLab.js"></script>
+    <link rel="stylesheet" type="text/css" href="xmlLabCSS.css">
     <title></title>
 </head>
 <body>
     <div>
         <div id="Content"></div>
         <p>
-            <input id="AddButton" type="button" value=" Add parameter " onclick="addParameter()">
-            <input id="DownloadButton" type="button" value=" Download file " onclick="download( 'output.xml', 'xml/plain')">
+            <!--<input id="AddButton" type="link" value=" Add parameter " onclick="addParameter()">-->
+            <a id="AddButton" onclick="addParameter()">Geminio</a>
+            <a id="DownloadButton" onclick="downloadThis('output.xml', 'xml/plain')">Akcio</a>
             <a href="" class="hidden" id="linkToFile" hidden = "hidden"></a>
         </p>
         <form id="NewParameter" hidden = "hidden">
@@ -26,9 +28,11 @@
                 </select>
             </p>
             <p>Value: <input id="NewValue" type="text"></p>
-            <p><input id="SaveButton" type="button" value="Save" onclick="saveParameter()">     <input id="CanselButton" type="button" value="Cansel" onclick="canselParameter()"></p>
+            <a><a id="SaveButton" onclick="saveParameter()">Enervate</a>     <a id="CanselButton" onclick="canselParameter()">Obliviate</a>
         </form>
-        <p></p>
+    </div>
+    <div id="pic_always">
+        <img src="img/always.png">
     </div>
 </body>
 </html>

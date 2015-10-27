@@ -1,0 +1,55 @@
+﻿body
+{
+    background: url(img/back.jpg);
+}
+#pic_always{
+    position: fixed;
+    right:0%;
+    bottom:0%;
+}
+input#text
+{
+    background: #a58769
+}
+a
+{
+    font-weight: bold;
+    font-style:italic;
+    cursor: pointer;
+    font-size: 20pt;
+}
+
+#AddButton:hover 
+{
+    color:orchid;
+    font-size: 30pt;
+}
+
+#DownloadButton:hover
+{
+    color:royalblue;
+    font-size: 30pt;
+}
+
+#SaveButton:hover
+{
+    color:orangered;
+    font-size: 30pt;
+}
+
+#CanselButton:hover
+{
+    color: rgba(45, 46, 39, 0.17);
+    font-size: 30pt;
+}
+
+#DeleteButton 
+{
+    font-size: 11pt;
+}
+
+#DeleteButton:hover 
+{
+    font-size: 15pt;
+    color:darkgreen;
+}

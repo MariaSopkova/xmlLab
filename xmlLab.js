@@ -26,8 +26,8 @@ function printParameter(element)
     html_element.setAttribute("value", element.value);
     document.getElementById("Content").appendChild(html_element);
     var form_type = getFormValue(element.type, element.value);
-    var string_to_show = "<input name=\"DeleteButton\" type=\"button\" value=\"Delete\" onclick=\'deleteParameter(this.parentNode)\'/>";
-    string_to_show += " Id: ".bold() + element.id + "; Name: ".bold() + element.name
+    var string_to_show = "<a id=\"DeleteButton\" onclick=\'deleteParameter(this.parentNode)\'/>Avada Kedavra</a>";
+    string_to_show += "     Id: ".bold() + element.id + "; Name: ".bold() + element.name
                             + "; Description: ".bold() + element.description + form_type + "</br>";
     html_element.innerHTML = string_to_show;
 }
@@ -38,15 +38,15 @@ function getFormValue(type, value)
     {
         case 'String':
             if (value === "")
-                return string_to_return + "<input onChange=\'setElementValue(this, this.parentNode)\' type=\'text\' />";
-            return string_to_return + "<input onChange=\'setElementValue(this, this.parentNode)\' type=\'text\' value=\'" + value + "\' />";
+                return string_to_return + "<input oninput=\'setElementValue(this, this.parentNode, false)\' type=\'text\' />";
+            return string_to_return + "<input oninput=\'setElementValue(this, this.parentNode, false)\' type=\'text\' value=\'" + value + "\' />";
         case 'Int32':
-            return string_to_return + "<input onChange=\'setElementValue(this, this.parentNode)\' type=\'number\' value=" + value + " />";
+            return string_to_return + "<input oninput=\'setElementValue(this, this.parentNode, true)\' type=\'text\' value=" + value + " />";
         case 'Boolean':
             var checkbox = "";
             if (value === "True" )
                 checkbox = "checked";
-            return string_to_return + "<input onChange=\'setElementValue(this, this.parentNode)\' type=\'checkbox\'" + checkbox + "/>";
+            return string_to_return + "<input oninput=\'setElementValue(this, this.parentNode, false)\' type=\'checkbox\'" + checkbox + "/>";
     }
 }
 function xmlParser(xml_doc)
@@ -65,7 +65,7 @@ function xmlParser(xml_doc)
     }
 }
 
-function setElementValue(child_node, parent_node)
+function setElementValue(child_node, parent_node, isNumber)
 {
     if (parent_node.getAttribute("type") == "Boolean")
     {
@@ -76,6 +76,14 @@ function setElementValue(child_node, parent_node)
     }
     else
     {
+        if( isNumber == true)
+        {
+            if (!(/-?[1-9][0-9]*$/.test(child_node.value)))
+            {
+                child_node.value = "";
+            }
+
+        }
         parent_node.setAttribute('value', child_node.value);
     }
 }
@@ -108,8 +116,35 @@ function saveParameter()
     element.description = document.getElementById("NewDescription").value;
     element.type = getTypeFromCombobox();
     element.value = getNewValue(element.type);
+    if (checkData(element))
+    return;
     printParameter(element);
     canselParameter();
+}
+function checkData(element)
+{
+    var result = false;
+    if (element.id == "")
+    {
+        result = true;
+    }
+    if (element.name == "")
+    {
+        result = true;
+    }
+    if (element.description == "")
+    {
+        result = true;
+    }
+    if (element.name == "Int32")
+    {
+        if (!(/-?[1-9][0-9]*$/.test(element.value)))
+        {
+            document.getElementById("NewDescription").value = "";
+            result = true;
+        }
+    }
+    return result;
 }
 
 function getTypeFromCombobox()
@@ -182,38 +217,15 @@ function generateOutputXML()
         xmlStr += "<Description>" + content[i].getAttribute("description") + "</Description>\n";
         xmlStr += "<Type>System." + type;
         xmlStr += "</Type>\n";
-        xmlStr += "<Value>" + getValueForOutput( type, content[i].getAttribute("value")) + "</Value>\n";
+        xmlStr += "<Value>" + content[i].getAttribute("value") + "</Value>\n";
         xmlStr += "</Parameter>";
     }
     xmlStr += "</Parameters>";
     return xmlStr;
 }
 
-function getValueForOutput(type, value)
+function downloadThis(fileName, type)
 {
-    /*switch (type)
-    {
-        case "String":
-        case "Int32":
-        {
-            return value;
-        }
-        case "Boolean":
-        {
-            if (value == "on")
-            {
-                return "True";
-            }
-            else
-            {
-                return "False";
-            }
-        }
-}*/
-    return value;
-}
-
-function download(fileName, type) {
 
     var text = generateOutputXML();
     var file = new Blob([text], { type: type });
